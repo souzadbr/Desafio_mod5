@@ -1,10 +1,9 @@
 package br.com.zup.GerenciarContas;
 
 
-import br.com.zup.GerenciarContas.enuns.Status;
-import br.com.zup.GerenciarContas.enuns.Tipo;
+import br.com.zup.GerenciarContas.enums.Status;
+import br.com.zup.GerenciarContas.enums.Tipo;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

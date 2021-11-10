@@ -1,6 +1,6 @@
 package br.com.zup.GerenciarContas.dtos;
 
-import br.com.zup.GerenciarContas.enuns.Tipo;
+import br.com.zup.GerenciarContas.enums.Tipo;
 
 import java.time.LocalDate;
 

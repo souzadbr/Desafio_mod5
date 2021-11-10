@@ -4,6 +4,7 @@ package br.com.zup.GerenciarContas;
 import br.com.zup.GerenciarContas.dtos.EntradaContaDTO;
 import br.com.zup.GerenciarContas.dtos.ResumoContaDTO;
 import br.com.zup.GerenciarContas.dtos.SaidaContaDTO;
+import br.com.zup.GerenciarContas.dtos.StatusContaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,5 +40,12 @@ public class ContaController {
         }
         return listaContaDTOS;
     }
+
+    @PutMapping("/{codigo}")
+    public SaidaContaDTO atualizarStatus (@PathVariable int codigo, @RequestBody StatusContaDTO statusContaDTO){
+        return modelMapper.map(contaService.atualizarStatusConta(codigo), SaidaContaDTO.class);
+
+    }
+
 
 }

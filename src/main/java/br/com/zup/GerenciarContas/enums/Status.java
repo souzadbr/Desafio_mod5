@@ -1,4 +1,4 @@
-package br.com.zup.GerenciarContas.enuns;
+package br.com.zup.GerenciarContas.enums;
 
 public enum Status {
     AGUARDANDO ("Aguardando"),

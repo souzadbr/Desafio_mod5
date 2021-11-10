@@ -1,10 +1,6 @@
 package br.com.zup.GerenciarContas.dtos;
 
-import br.com.zup.GerenciarContas.enuns.Status;
-import br.com.zup.GerenciarContas.enuns.Tipo;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import br.com.zup.GerenciarContas.enums.Status;
 
 public class ResumoContaDTO {
 
