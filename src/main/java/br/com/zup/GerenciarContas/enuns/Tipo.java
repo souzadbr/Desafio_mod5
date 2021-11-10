@@ -1,4 +1,4 @@
-package br.com.zup.GerenciarContas;
+package br.com.zup.GerenciarContas.enuns;
 
 public enum Tipo {
 
