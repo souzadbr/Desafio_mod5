@@ -6,14 +6,14 @@ import br.com.zup.GerenciarContas.enuns.Tipo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ListaContaDTO {
+public class ResumoContaDTO {
 
     private int codigo;
     private String nome;
     private double valor;
     private Status status;
 
-    public ListaContaDTO() {
+    public ResumoContaDTO() {
     }
 
     public int getCodigo() {
