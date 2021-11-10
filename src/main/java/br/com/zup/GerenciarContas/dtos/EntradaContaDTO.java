@@ -2,6 +2,7 @@ package br.com.zup.GerenciarContas.dtos;
 
 import br.com.zup.GerenciarContas.enums.Tipo;
 
+import javax.validation.constraints.Min;
 import java.time.LocalDate;
 
 public class EntradaContaDTO {

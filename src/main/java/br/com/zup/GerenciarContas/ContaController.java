@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/conta")
+@RequestMapping("/conta")
 public class ContaController {
     @Autowired
     private ContaService contaService;
@@ -24,17 +24,17 @@ public class ContaController {
 
 
     @PostMapping
-    @ResponseStatus (HttpStatus.CREATED)
-    public SaidaContaDTO cadastrarConta (@RequestBody EntradaContaDTO entradaContaDTO){
-        Conta conta = modelMapper.map (entradaContaDTO, Conta.class);
+    @ResponseStatus(HttpStatus.CREATED)
+    public SaidaContaDTO cadastrarConta(@RequestBody EntradaContaDTO entradaContaDTO) {
+        Conta conta = modelMapper.map(entradaContaDTO, Conta.class);
 
-       return modelMapper.map(contaService.cadastrarConta(conta), SaidaContaDTO.class);
+        return modelMapper.map(contaService.cadastrarConta(conta), SaidaContaDTO.class);
     }
 
     @GetMapping
-    public List<ResumoContaDTO>exibirListaDeContas(){
-        List<ResumoContaDTO>listaContaDTOS = new ArrayList<>();
-        for (Conta conta: contaService.exibirTodosOsCadastros()) {
+    public List<ResumoContaDTO> exibirListaDeContas() {
+        List<ResumoContaDTO> listaContaDTOS = new ArrayList<>();
+        for (Conta conta : contaService.exibirTodosOsCadastros()) {
             ResumoContaDTO resumoContaDTO = modelMapper.map(conta, ResumoContaDTO.class);
             listaContaDTOS.add(resumoContaDTO);
         }
@@ -42,7 +42,7 @@ public class ContaController {
     }
 
     @PutMapping("/{codigo}")
-    public SaidaContaDTO atualizarStatus (@PathVariable int codigo, @RequestBody StatusContaDTO statusContaDTO){
+    public SaidaContaDTO atualizarStatus(@PathVariable int codigo, @RequestBody StatusContaDTO statusContaDTO) {
         return modelMapper.map(contaService.atualizarStatusConta(codigo), SaidaContaDTO.class);
 
     }
