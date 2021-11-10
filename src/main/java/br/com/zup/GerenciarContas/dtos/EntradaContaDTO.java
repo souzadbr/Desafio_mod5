@@ -1,4 +1,4 @@
-package br.com.zup.GerenciarContas;
+package br.com.zup.GerenciarContas.dtos;
 
 import br.com.zup.GerenciarContas.enuns.Tipo;
 
