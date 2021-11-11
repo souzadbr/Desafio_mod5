@@ -31,7 +31,10 @@ public class ControllerAdvisor {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MensagemDeErro manipularExcecaoEnumInvalido(HttpMessageNotReadableException exception){
-        return new MensagemDeErro("Opção não encontrada");
+        if(exception.getLocalizedMessage().contains("br.com.zup.GerenciarContas.enums.Tipo")){
+            return new MensagemDeErro("Opção não encontrada");
+        }
+      return new MensagemDeErro(exception.getLocalizedMessage());
     }
 
     @ExceptionHandler(ContaNãoEcontradaPorIdException.class)
