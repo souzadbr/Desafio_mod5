@@ -57,6 +57,13 @@ public class ContaService {
         return conta;
     }
 
+    //Método mostrar 1 conta por ID
+    public Conta mostrarContaPorId(int codigo){
+        Conta conta = buscarConta(codigo);
+
+        return conta;
+    }
+
     }
 
 

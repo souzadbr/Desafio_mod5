@@ -43,6 +43,10 @@ public class ContaController {
         }
         return listaContaDTOS;
     }
+    @GetMapping ("/{codigo}")
+    public SaidaContaDTO mostrarContaPorId(@PathVariable int codigo){
+        return modelMapper.map(contaService.buscarConta(codigo), SaidaContaDTO.class);
+    }
 
     @PutMapping("/{codigo}")
     public SaidaContaDTO atualizarStatus(@PathVariable int codigo, @RequestBody StatusContaDTO statusContaDTO) {

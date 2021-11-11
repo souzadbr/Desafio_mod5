@@ -31,7 +31,7 @@ public class ControllerAdvisor {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MensagemDeErro manipularExcecaoEnumInvalido(HttpMessageNotReadableException exception){
-        return new MensagemDeErro("Opção não encontrar");
+        return new MensagemDeErro("Opção não encontrada");
     }
 
     @ExceptionHandler(ContaNãoEcontradaPorIdException.class)
