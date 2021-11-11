@@ -4,11 +4,12 @@ import br.com.zup.GerenciarContas.enums.Tipo;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class EntradaContaDTO {
 
-    @Min( value = 2, message =  "MÍnimo de caracteres não atingido" )
+    @Size( min = 2, max = 30, message = "Quantidade de caracteres inválida!")
     private String nome;
     private double valor;
     private Tipo tipo;
