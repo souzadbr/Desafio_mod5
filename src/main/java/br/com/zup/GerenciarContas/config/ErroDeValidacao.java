@@ -1,8 +1,8 @@
-package br.com.zup.GerenciarContas;
+package br.com.zup.GerenciarContas.config;
 
 public class ErroDeValidacao {
-    private String mensagem;
     private String campo;
+    private String mensagem;
 
     public ErroDeValidacao(String mensagem, String campo) {
         this.mensagem = mensagem;

@@ -19,7 +19,7 @@ public class ContaService {
 
     //método cadastrarConta(ContaDTO):ContaSaidaDTO
     public Conta cadastrarConta(Conta conta) {
-        verificarValorConta(conta);
+
         verificarStatusConta(conta);
         conta.setDataDePagamento(null);
         return contaRepository.save(conta);
@@ -44,7 +44,7 @@ public class ContaService {
     public Conta buscarConta(int codigo) {
         Optional<Conta> conta = contaRepository.findById(codigo);
         if (conta.isEmpty()) {
-            throw new ContaNãoEcontradaPorIdException();
+            throw new ContaNãoEcontradaPorIdException("Conta não encontrada");
         }
         return conta.get();
     }
@@ -59,12 +59,7 @@ public class ContaService {
         return conta;
     }
 
-    //método verificar valor conta
-    private void verificarValorConta (Conta conta){
-        if (conta.getValor() <= 0){
-            throw new ValorDeContaInvalidoException("Valor inválido");
-        }
     }
 
 
-}
+

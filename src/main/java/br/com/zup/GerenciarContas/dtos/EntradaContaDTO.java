@@ -2,6 +2,7 @@ package br.com.zup.GerenciarContas.dtos;
 
 import br.com.zup.GerenciarContas.enums.Tipo;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -11,6 +12,7 @@ public class EntradaContaDTO {
 
     @Size( min = 2, max = 30, message = "Quantidade de caracteres inválida!")
     private String nome;
+    @DecimalMin(value = "0.01")
     private double valor;
     private Tipo tipo;
     private LocalDate dataDeVencimento;

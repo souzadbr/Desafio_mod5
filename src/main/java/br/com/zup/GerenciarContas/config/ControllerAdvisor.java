@@ -1,4 +1,4 @@
-package br.com.zup.GerenciarContas;
+package br.com.zup.GerenciarContas.config;
 
 import br.com.zup.GerenciarContas.exception.ValorDeContaInvalidoException;
 import org.springframework.http.HttpStatus;
@@ -6,7 +6,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
@@ -20,14 +19,11 @@ public class ControllerAdvisor {
     public List<ErroDeValidacao> manipularErrosDeValidacao(MethodArgumentNotValidException exception) {
         List<ErroDeValidacao> erros = new ArrayList<>();
         for (FieldError fieldError : exception.getFieldErrors()) {
-            ErroDeValidacao erroDeValidacao = new ErroDeValidacao(fieldError.getField(),
-                    fieldError.getDefaultMessage());
+            ErroDeValidacao erroDeValidacao = new ErroDeValidacao(
+                    fieldError.getDefaultMessage(),fieldError.getField());
             erros.add(erroDeValidacao);
         }
         return erros;
     }
 
-    @ExceptionHandler(ValorDeContaInvalidoException.class)
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public 
 }
