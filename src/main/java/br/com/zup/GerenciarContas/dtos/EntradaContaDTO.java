@@ -2,10 +2,7 @@ package br.com.zup.GerenciarContas.dtos;
 
 import br.com.zup.GerenciarContas.enums.Tipo;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 public class EntradaContaDTO {
@@ -15,6 +12,7 @@ public class EntradaContaDTO {
     @DecimalMin(value = "0.01")
     private double valor;
     private Tipo tipo;
+    @NotNull(message = "Campo vazio, por favor preencher!")
     private LocalDate dataDeVencimento;
 
     public EntradaContaDTO() {
