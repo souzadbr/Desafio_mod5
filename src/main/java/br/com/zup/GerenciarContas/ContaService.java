@@ -33,7 +33,10 @@ public class ContaService {
     }
 
     //método exibir lista de cadastro usando ResumoContaDTO
-    public List<Conta> exibirTodosOsCadastros() {
+    public List<Conta> exibirTodosOsCadastros(Status status) {
+        if(status != null){
+            return (List<Conta>) contaRepository.findAllByStatus(status);
+        }
         List<Conta> conta = (List<Conta>) contaRepository.findAll();
         return conta;
     }

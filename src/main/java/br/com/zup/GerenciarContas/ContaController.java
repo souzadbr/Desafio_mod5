@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/conta")
 public class ContaController {
+
     @Autowired
     private ContaService contaService;
 
@@ -35,14 +36,15 @@ public class ContaController {
     }
 
     @GetMapping
-    public List<ResumoContaDTO> exibirListaDeContas() {
+    public List<ResumoContaDTO> exibirListaDeContas(@RequestParam(required = false)Status status) {
         List<ResumoContaDTO> listaContaDTOS = new ArrayList<>();
-        for (Conta conta : contaService.exibirTodosOsCadastros()) {
+        for (Conta conta : contaService.exibirTodosOsCadastros(status)) {
             ResumoContaDTO resumoContaDTO = modelMapper.map(conta, ResumoContaDTO.class);
             listaContaDTOS.add(resumoContaDTO);
         }
         return listaContaDTOS;
     }
+
     @GetMapping ("/{codigo}")
     public SaidaContaDTO mostrarContaPorId(@PathVariable int codigo){
         return modelMapper.map(contaService.buscarConta(codigo), SaidaContaDTO.class);
@@ -51,7 +53,8 @@ public class ContaController {
     @PutMapping("/{codigo}")
     public SaidaContaDTO atualizarStatus(@PathVariable int codigo, @RequestBody StatusContaDTO statusContaDTO) {
         if(statusContaDTO.getStatus() == Status.PAGO){
-            return modelMapper.map(contaService.atualizarStatusConta(codigo,statusContaDTO.getStatus()), SaidaContaDTO.class);
+            return modelMapper.map(contaService.atualizarStatusConta(codigo,statusContaDTO.getStatus()),
+                    SaidaContaDTO.class);
         }else {
             throw new StatusInválidoSelecionarPagoException("Status inválido, Selecionar PAGO!");
         }
