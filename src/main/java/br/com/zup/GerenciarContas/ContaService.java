@@ -62,7 +62,7 @@ public class ContaService {
     //método verificar valor conta
     private void verificarValorConta (Conta conta){
         if (conta.getValor() <= 0){
-            throw new ValorDeContaInvalidoException();
+            throw new ValorDeContaInvalidoException("Valor inválido");
         }
     }
 
