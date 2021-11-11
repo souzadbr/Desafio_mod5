@@ -1,6 +1,7 @@
 package br.com.zup.GerenciarContas;
 
 import br.com.zup.GerenciarContas.enums.Status;
+import br.com.zup.GerenciarContas.enums.Tipo;
 import br.com.zup.GerenciarContas.exception.ContaNãoEcontradaPorIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,9 +34,12 @@ public class ContaService {
     }
 
     //método exibir lista de cadastro usando ResumoContaDTO
-    public List<Conta> exibirTodosOsCadastros(Status status) {
+    public List<Conta> exibirTodosOsCadastros(Status status, Tipo tipo) {
         if(status != null){
             return (List<Conta>) contaRepository.findAllByStatus(status);
+        }
+        if(tipo != null){
+            return (List<Conta>) contaRepository.findAllByTipo(tipo);
         }
         List<Conta> conta = (List<Conta>) contaRepository.findAll();
         return conta;

@@ -6,6 +6,7 @@ import br.com.zup.GerenciarContas.dtos.ResumoContaDTO;
 import br.com.zup.GerenciarContas.dtos.SaidaContaDTO;
 import br.com.zup.GerenciarContas.dtos.StatusContaDTO;
 import br.com.zup.GerenciarContas.enums.Status;
+import br.com.zup.GerenciarContas.enums.Tipo;
 import br.com.zup.GerenciarContas.exception.StatusInválidoSelecionarPagoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,10 @@ public class ContaController {
     }
 
     @GetMapping
-    public List<ResumoContaDTO> exibirListaDeContas(@RequestParam(required = false)Status status) {
+    public List<ResumoContaDTO> exibirListaDeContas(@RequestParam(required = false)Status status,
+                                                    @RequestParam(required = false) Tipo tipo) {
         List<ResumoContaDTO> listaContaDTOS = new ArrayList<>();
-        for (Conta conta : contaService.exibirTodosOsCadastros(status)) {
+        for (Conta conta : contaService.exibirTodosOsCadastros(status, tipo)) {
             ResumoContaDTO resumoContaDTO = modelMapper.map(conta, ResumoContaDTO.class);
             listaContaDTOS.add(resumoContaDTO);
         }
