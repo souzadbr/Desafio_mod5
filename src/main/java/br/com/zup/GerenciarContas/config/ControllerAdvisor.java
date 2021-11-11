@@ -1,6 +1,7 @@
 package br.com.zup.GerenciarContas.config;
 
 import br.com.zup.GerenciarContas.exception.ContaNãoEcontradaPorIdException;
+import br.com.zup.GerenciarContas.exception.StatusInválidoSelecionarPagoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -37,6 +38,12 @@ public class ControllerAdvisor {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public MensagemDeErro manipularExcecaoDEContaNãoEcontrada(ContaNãoEcontradaPorIdException exception){
         return new MensagemDeErro("Conta não encontrada");
+    }
+
+    @ExceptionHandler(StatusInválidoSelecionarPagoException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public MensagemDeErro manipularExcecaoSelecionarStatusPago(StatusInválidoSelecionarPagoException exception){
+        return new MensagemDeErro("Selecionar Status PAGO");
     }
 
 }

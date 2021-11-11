@@ -5,6 +5,8 @@ import br.com.zup.GerenciarContas.dtos.EntradaContaDTO;
 import br.com.zup.GerenciarContas.dtos.ResumoContaDTO;
 import br.com.zup.GerenciarContas.dtos.SaidaContaDTO;
 import br.com.zup.GerenciarContas.dtos.StatusContaDTO;
+import br.com.zup.GerenciarContas.enums.Status;
+import br.com.zup.GerenciarContas.exception.StatusInválidoSelecionarPagoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,7 +46,12 @@ public class ContaController {
 
     @PutMapping("/{codigo}")
     public SaidaContaDTO atualizarStatus(@PathVariable int codigo, @RequestBody StatusContaDTO statusContaDTO) {
-        return modelMapper.map(contaService.atualizarStatusConta(codigo), SaidaContaDTO.class);
+        if(statusContaDTO.getStatus() == Status.PAGO){
+            return modelMapper.map(contaService.atualizarStatusConta(codigo,statusContaDTO.getStatus()), SaidaContaDTO.class);
+        }else {
+            throw new StatusInválidoSelecionarPagoException("Status inválido, Selecionar PAGO!");
+        }
+
 
     }
 

@@ -48,10 +48,10 @@ public class ContaService {
     }
 
     //método atualizar pagamento de conta
-    public Conta atualizarStatusConta(int codigo) {
+    public Conta atualizarStatusConta(int codigo, Status status) {
         Conta conta = buscarConta(codigo);
         conta.setDataDePagamento(LocalDateTime.now());
-        conta.setStatus(Status.PAGO);
+        conta.setStatus(status);
         contaRepository.save(conta);
 
         return conta;
