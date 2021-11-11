@@ -3,10 +3,12 @@ package br.com.zup.GerenciarContas.dtos;
 import br.com.zup.GerenciarContas.enums.Tipo;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 public class EntradaContaDTO {
 
+    @Min( value = 2, message =  "MÍnimo de caracteres não atingido" )
     private String nome;
     private double valor;
     private Tipo tipo;
