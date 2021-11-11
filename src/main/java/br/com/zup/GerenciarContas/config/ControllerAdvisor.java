@@ -1,6 +1,7 @@
 package br.com.zup.GerenciarContas.config;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,6 +24,12 @@ public class ControllerAdvisor {
             erros.add(erroDeValidacao);
         }
         return erros;
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public MensagemDeErro manipularExcecaoEnumInvalido(HttpMessageNotReadableException exception){
+        return new MensagemDeErro("Opção não encontrar");
     }
 
 }
