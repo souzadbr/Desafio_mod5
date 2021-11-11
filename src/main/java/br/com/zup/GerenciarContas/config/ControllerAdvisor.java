@@ -1,5 +1,6 @@
 package br.com.zup.GerenciarContas;
 
+import br.com.zup.GerenciarContas.exception.ValorDeContaInvalidoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -25,4 +26,8 @@ public class ControllerAdvisor {
         }
         return erros;
     }
+
+    @ExceptionHandler(ValorDeContaInvalidoException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public 
 }
