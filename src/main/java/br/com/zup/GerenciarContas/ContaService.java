@@ -1,9 +1,7 @@
 package br.com.zup.GerenciarContas;
 
-import br.com.zup.GerenciarContas.dtos.EntradaContaDTO;
 import br.com.zup.GerenciarContas.enums.Status;
 import br.com.zup.GerenciarContas.exception.ContaNãoEcontradaPorIdException;
-import br.com.zup.GerenciarContas.exception.ValorDeContaInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

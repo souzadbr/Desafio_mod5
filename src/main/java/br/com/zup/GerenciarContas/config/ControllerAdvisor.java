@@ -1,6 +1,5 @@
 package br.com.zup.GerenciarContas.config;
 
-import br.com.zup.GerenciarContas.exception.ValorDeContaInvalidoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
