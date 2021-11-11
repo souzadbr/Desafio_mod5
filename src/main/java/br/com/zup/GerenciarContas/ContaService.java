@@ -35,10 +35,10 @@ public class ContaService {
 
     //método exibir lista de cadastro usando ResumoContaDTO
     public List<Conta> exibirTodosOsCadastros(Status status, Tipo tipo) {
-        if(status != null){
+        if (status != null) {
             return (List<Conta>) contaRepository.findAllByStatus(status);
         }
-        if(tipo != null){
+        if (tipo != null) {
             return (List<Conta>) contaRepository.findAllByTipo(tipo);
         }
         List<Conta> conta = (List<Conta>) contaRepository.findAll();
@@ -65,13 +65,22 @@ public class ContaService {
     }
 
     //Método mostrar 1 conta por ID
-    public Conta mostrarContaPorId(int codigo){
+    public Conta mostrarContaPorId(int codigo) {
         Conta conta = buscarConta(codigo);
 
         return conta;
     }
 
+    //Método deletar conta via id
+    public void deletarConta(int codigo){
+        if(contaRepository.existsById(codigo)){
+            contaRepository.deleteById(codigo);
+        }else {
+            throw new ContaNãoEcontradaPorIdException("Contra não encontrada!");
+        }
     }
+
+}
 
 
 

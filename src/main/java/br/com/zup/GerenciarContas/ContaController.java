@@ -64,5 +64,11 @@ public class ContaController {
 
     }
 
+    @DeleteMapping ("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarConta(@PathVariable int codigo){
+        contaService.deletarConta(codigo);
+    }
+
 
 }
