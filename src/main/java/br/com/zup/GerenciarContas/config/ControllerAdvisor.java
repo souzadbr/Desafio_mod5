@@ -1,5 +1,6 @@
 package br.com.zup.GerenciarContas.config;
 
+import br.com.zup.GerenciarContas.exception.ContaNãoEcontradaPorIdException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -30,6 +31,12 @@ public class ControllerAdvisor {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MensagemDeErro manipularExcecaoEnumInvalido(HttpMessageNotReadableException exception){
         return new MensagemDeErro("Opção não encontrar");
+    }
+
+    @ExceptionHandler(ContaNãoEcontradaPorIdException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemDeErro manipularExcecaoDEContaNãoEcontrada(ContaNãoEcontradaPorIdException exception){
+        return new MensagemDeErro("Conta não encontrada");
     }
 
 }
