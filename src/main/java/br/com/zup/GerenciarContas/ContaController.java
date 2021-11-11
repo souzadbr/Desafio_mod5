@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/conta")
+@RequestMapping("/contas")
 public class ContaController {
 
     @Autowired
@@ -38,9 +38,10 @@ public class ContaController {
 
     @GetMapping
     public List<ResumoContaDTO> exibirListaDeContas(@RequestParam(required = false)Status status,
-                                                    @RequestParam(required = false) Tipo tipo) {
+                                                    @RequestParam(required = false) Tipo tipo,
+                                                    @RequestParam(required = false)Double valor) {
         List<ResumoContaDTO> listaContaDTOS = new ArrayList<>();
-        for (Conta conta : contaService.exibirTodosOsCadastros(status, tipo)) {
+        for (Conta conta : contaService.exibirTodosOsCadastros(status, tipo, valor)) {
             ResumoContaDTO resumoContaDTO = modelMapper.map(conta, ResumoContaDTO.class);
             listaContaDTOS.add(resumoContaDTO);
         }
@@ -60,8 +61,6 @@ public class ContaController {
         }else {
             throw new StatusInválidoSelecionarPagoException("Status inválido, Selecionar PAGO!");
         }
-
-
     }
 
     @DeleteMapping ("/{codigo}")

@@ -6,6 +6,7 @@ import br.com.zup.GerenciarContas.exception.ContaNãoEcontradaPorIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,13 +35,17 @@ public class ContaService {
     }
 
     //método exibir lista de cadastro usando ResumoContaDTO
-    public List<Conta> exibirTodosOsCadastros(Status status, Tipo tipo) {
+    public List<Conta> exibirTodosOsCadastros(Status status, Tipo tipo, Double valor) {
         if (status != null) {
             return (List<Conta>) contaRepository.findAllByStatus(status);
         }
-        if (tipo != null) {
+        else if (tipo != null) {
             return (List<Conta>) contaRepository.findAllByTipo(tipo);
         }
+        else if(valor != null){
+            return (List<Conta>) contaRepository.findAllByValorBetween(valor);
+        }
+
         List<Conta> conta = (List<Conta>) contaRepository.findAll();
         return conta;
     }
