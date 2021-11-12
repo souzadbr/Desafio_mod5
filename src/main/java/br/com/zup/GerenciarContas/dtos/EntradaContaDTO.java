@@ -8,9 +8,11 @@ import java.time.LocalDate;
 public class EntradaContaDTO {
 
     @Size( min = 2, max = 30, message = "Quantidade de caracteres inválida!")
+    @NotBlank
     private String nome;
     @DecimalMin(value = "0.01")
     private double valor;
+    @NotNull
     private Tipo tipo;
     @NotNull(message = "Campo vazio, por favor preencher!")
     private LocalDate dataDeVencimento;
