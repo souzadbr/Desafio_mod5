@@ -4,7 +4,7 @@ import br.com.zup.GerenciarContas.enums.Status;
 
 public class ResumoContaDTO {
 
-    private int codigo;
+    private int id;
     private String nome;
     private double valor;
     private Status status;
@@ -12,12 +12,12 @@ public class ResumoContaDTO {
     public ResumoContaDTO() {
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

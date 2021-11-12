@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public class SaidaContaDTO {
 
-    private int codigo;
+    private int id;
     private String nome;
     private double valor;
     private Tipo tipo;
@@ -19,12 +19,12 @@ public class SaidaContaDTO {
     public SaidaContaDTO() {
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

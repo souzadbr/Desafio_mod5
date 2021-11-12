@@ -48,25 +48,25 @@ public class ContaController {
         return listaContaDTOS;
     }
 
-    @GetMapping ("/{codigo}")
-    public SaidaContaDTO mostrarContaPorId(@PathVariable int codigo){
-        return modelMapper.map(contaService.buscarConta(codigo), SaidaContaDTO.class);
+    @GetMapping ("/{id}")
+    public SaidaContaDTO mostrarContaPorId(@PathVariable int id){
+        return modelMapper.map(contaService.buscarConta(id), SaidaContaDTO.class);
     }
 
-    @PutMapping("/{codigo}")
-    public SaidaContaDTO atualizarStatus(@PathVariable int codigo, @RequestBody StatusContaDTO statusContaDTO) {
+    @PutMapping("/{id}")
+    public SaidaContaDTO atualizarStatus(@PathVariable int id, @RequestBody StatusContaDTO statusContaDTO) {
         if(statusContaDTO.getStatus() == Status.PAGO){
-            return modelMapper.map(contaService.atualizarStatusConta(codigo,statusContaDTO.getStatus()),
+            return modelMapper.map(contaService.atualizarStatusConta(id,statusContaDTO.getStatus()),
                     SaidaContaDTO.class);
         }else {
             throw new StatusInválidoSelecionarPagoException("Status inválido, Selecionar PAGO!");
         }
     }
 
-    @DeleteMapping ("/{codigo}")
+    @DeleteMapping ("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarConta(@PathVariable int codigo){
-        contaService.deletarConta(codigo);
+    public void deletarConta(@PathVariable int id){
+        contaService.deletarConta(id);
     }
 
 

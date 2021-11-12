@@ -15,7 +15,7 @@ public class Conta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
+    private int id;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
@@ -32,12 +32,12 @@ public class Conta {
     public Conta() {
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

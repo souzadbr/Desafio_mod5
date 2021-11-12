@@ -6,7 +6,6 @@ import br.com.zup.GerenciarContas.exception.ContaNãoEcontradaPorIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -51,8 +50,8 @@ public class ContaService {
     }
 
     //método buscarConta
-    public Conta buscarConta(int codigo) {
-        Optional<Conta> conta = contaRepository.findById(codigo);
+    public Conta buscarConta(int id) {
+        Optional<Conta> conta = contaRepository.findById(id);
         if (conta.isEmpty()) {
             throw new ContaNãoEcontradaPorIdException("Conta não encontrada");
         }
@@ -60,8 +59,8 @@ public class ContaService {
     }
 
     //método atualizar pagamento de conta
-    public Conta atualizarStatusConta(int codigo, Status status) {
-        Conta conta = buscarConta(codigo);
+    public Conta atualizarStatusConta(int id, Status status) {
+        Conta conta = buscarConta(id);
         conta.setDataDePagamento(LocalDateTime.now());
         conta.setStatus(status);
         contaRepository.save(conta);
@@ -70,16 +69,16 @@ public class ContaService {
     }
 
     //Método mostrar 1 conta por ID
-    public Conta mostrarContaPorId(int codigo) {
-        Conta conta = buscarConta(codigo);
+    public Conta mostrarContaPorId(int id) {
+        Conta conta = buscarConta(id);
 
         return conta;
     }
 
     //Método deletar conta via id
-    public void deletarConta(int codigo){
-        if(contaRepository.existsById(codigo)){
-            contaRepository.deleteById(codigo);
+    public void deletarConta(int id){
+        if(contaRepository.existsById(id)){
+            contaRepository.deleteById(id);
         }else {
             throw new ContaNãoEcontradaPorIdException("Contra não encontrada!");
         }
